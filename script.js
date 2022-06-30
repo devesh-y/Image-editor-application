@@ -1,15 +1,18 @@
 const fileInput = document.querySelector("#imageFileInput");
 const canvas = document.querySelector("#canvas");
-const canvasCtx = canvas.getContext("2d");
+const drawingcontext = canvas.getContext("2d");
 const brightnessInput = document.querySelector("#brightness");
 const saturationInput = document.querySelector("#saturation");
 const blurInput = document.querySelector("#blur");
 const inversionInput = document.querySelector("#inversion");
 
-const settings = {};
+const settings = {
+
+};
 let image = null;
 
-function resetSettings() {
+function resetSettings() 
+{
   settings.brightness = "100";
   settings.saturation = "100";
   settings.blur = "0";
@@ -21,49 +24,55 @@ function resetSettings() {
   inversionInput.value = settings.inversion;
 }
 
-function updateSetting(key, value) {
-  if (!image) return;
+function updatesettings(key, value) 
+{
+  if (!image) 
+    return;
 
   settings[key] = value;
-  renderImage();
+  processimage();
 }
 
-function generateFilter() {
+function myfilter() 
+{
   const { brightness, saturation, blur, inversion } = settings;
 
   return `brightness(${brightness}%) saturate(${saturation}%) blur(${blur}px) invert(${inversion}%)`;
 }
 
-function renderImage() {
+function processimage() {
   canvas.width = image.width;
   canvas.height = image.height;
 
-  canvasCtx.filter = generateFilter();
-  canvasCtx.drawImage(image, 0, 0);
+  drawingcontext.filter = myfilter();
+  drawingcontext.drawImage(image, 0, 0);//from left 0 and right 0
 }
 
 brightnessInput.addEventListener("change", () =>
-  updateSetting("brightness", brightnessInput.value)
+  updatesettings("brightness", brightnessInput.value)
 );
 saturationInput.addEventListener("change", () =>
-  updateSetting("saturation", saturationInput.value)
+  updatesettings("saturation", saturationInput.value)
 );
 blurInput.addEventListener("change", () =>
-  updateSetting("blur", blurInput.value)
+  updatesettings("blur", blurInput.value)
 );
 inversionInput.addEventListener("change", () =>
-  updateSetting("inversion", inversionInput.value)
+  updatesettings("inversion", inversionInput.value)
 );
 
-fileInput.addEventListener("change", () => {
+fileInput.addEventListener("change", () => 
+{
   image = new Image();
 
   image.addEventListener("load", () => {
     resetSettings();
-    renderImage();
+    processimage();
   });
-
   image.src = URL.createObjectURL(fileInput.files[0]);
 });
-
+document.getElementById("resetbtn").onclick=()=>{
+  resetSettings();
+  processimage();
+}
 resetSettings();

@@ -12,6 +12,7 @@ body {
   .toolbar {
     width: 250px;
     background: #eeeeee;
+
   }
   
   .toolbar-item {
@@ -32,7 +33,7 @@ body {
   .image-area {
     flex-grow: 1;
     padding: 20px;
-    background: #555555;
+    background: #dac8c8;
   }
   
   #canvas {

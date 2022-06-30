@@ -11,7 +11,7 @@
     <div class="editor">
         <div class="toolbar">
           <div class="toolbar-item">
-            <input type="file" id="imageFileInput">
+            <input type="file" id="imageFileInput" accept="image/png,image/jpeg,image/jpg">
           </div>
           <div class="toolbar-item">
             <label class="tool-label" for="brightness">Brightness</label>
@@ -29,6 +29,10 @@
             <label class="tool-label" for="inversion">Inversion</label>
             <input class="tool-input" type="range" id="inversion" min="0" max="100">
           </div>
+          <div class="toolbar-item">
+            <button id="resetbtn">Reset</button>
+          </div>
+   
         </div>
         <div class="image-area">
           <canvas id="canvas" height="500" width="500"></canvas>
