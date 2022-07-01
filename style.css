@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    box-sizing: border-box;
   }
   
   .editor {
@@ -11,7 +12,7 @@ body {
   
   .toolbar {
     width: 250px;
-    background: #eeeeee;
+    background: #73f5f5;
 
   }
   
@@ -19,6 +20,11 @@ body {
     padding: 15px;
   }
   
+  .toolbar-item header{
+    font-size: 25px;
+    font-weight: 1000;
+    color: red;
+  }
   .tool-label {
     display: block;
     margin-bottom: 5px;
@@ -33,7 +39,8 @@ body {
   .image-area {
     flex-grow: 1;
     padding: 20px;
-    background: #dac8c8;
+    border: 2px solid black;
+    background: #fbfbfb;
   }
   
   #canvas {
